@@ -1,0 +1,1 @@
+package android.hardware.usb; public class UsbDevice {public int getVendorId(){return 0x213c;} public int getProductId(){return 2;} public UsbInterface getInterface(int n){return new UsbInterface();}}

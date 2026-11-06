@@ -1,0 +1,23 @@
+{
+  "gradle": {
+    "version": "9.8.2",
+    "url": "https://services.gradle.org/distributions/gradle-9.8.2-bin.zip",
+    "sha256": "21bd5da2de49b642904077f38c0efdc7778e92b3ed0889392dca61b97e389607"
+  },
+  "agp": "9.5.0",
+  "compileSdk": "37.2",
+  "minSdk": 28,
+  "targetSdk": 28,
+  "buildTools": {
+    "version": "36.0.0",
+    "url": "https://dl.google.com/android/repository/build-tools_r36_macosx.zip",
+    "sha1": "199ae0047ee61e842f8ee0c6d3918e44fb9a1f83"
+  },
+  "platform": {
+    "url": "https://dl.google.com/android/repository/platform-37.2_r02.zip",
+    "sha1": "d52b3062af96f7c4dfdca5a479cd1db33ae83762"
+  },
+  "java": "17",
+  "geckoview": "org.mozilla.geckoview:geckoview-arm64-v8a:159.0.20261102144711",
+  "androidx-core": "1.19.1"
+}

@@ -1,0 +1,9 @@
+# Controller worker review harness
+
+`zsh run.sh 3` compiles the real production ControllerEngine, protocol and control classes against minimal host-only Android/USB stubs, then runs three complete scenario passes. Stubs live only under tests and are never packaged in the Android app. No ADB, network, real USB or treadmill is used by this harness.
+
+The fake board exercises startup verification without field writes, safety-key gates, fast leave/reopen, refused verification, session expiry during Start without replay, key/unknown-mode changes during Start, bounded local speed/incline/fan inputs, background Pause, missing/stale samples, corrupt reply rejection and invalid fan-state rejection. It records every attempted field write, including rejected writes.
+
+This verifies worker behavior and request ordering under the simulated conditions. It does not verify the real board's metadata, USB timing, physical speed, belt stopping, button hardware, Android Activity touch dispatch, video playback or the rendered layout. Those require device checks with the owner present. UI hold cancellation and profile confirmation checks were also reviewed in MainActivity.
+
+The harness now withholds UI heartbeats from a running production worker and checks that it requests Pause and rejects more inputs. Healthy fake-UI heartbeats are supplied to other waits; these are responsiveness signals, not a presence sensor. RecorderHostTest compiles the real WorkoutRecorder against a separate in-memory sink, then simulates24-hour pause/disconnect,8-hour running, batch/sample bounds and interrupted-summary recovery. The fake WorkoutStore and Android stubs are test-only and never packaged in the APK. Pure IdleTest covers multi-day running with no touch and stopped-only housekeeping. Android views, BLE callbacks and Gecko are reviewed/compiled but still need real device checks.

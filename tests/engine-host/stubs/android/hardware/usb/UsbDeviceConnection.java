@@ -1,0 +1,1 @@
+package android.hardware.usb; public class UsbDeviceConnection {public boolean claimInterface(UsbInterface i,boolean force){return true;} public boolean releaseInterface(UsbInterface i){return true;} public void close(){} public int bulkTransfer(UsbEndpoint e,byte[] b,int n,int timeout){return -1;} }

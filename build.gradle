@@ -1,0 +1,5 @@
+plugins { id 'com.android.application' version '9.5.0' apply false }
+
+// Keep generated build trees out of synced Documents; sources remain in this workspace.
+def consoleBuildRoot = providers.gradleProperty("consoleBuildRoot").orNull
+if (consoleBuildRoot != null) { allprojects { layout.buildDirectory.set(file("${consoleBuildRoot}/${project.name}")) } }

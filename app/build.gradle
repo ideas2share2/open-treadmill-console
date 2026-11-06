@@ -1,0 +1,13 @@
+plugins { id 'com.android.application' }
+android {
+ namespace 'org.opentread.console'
+ compileSdk { version = release(37) { minorApiLevel = 2 } }
+ buildToolsVersion '36.0.0'
+ defaultConfig { applicationId 'org.opentread.console'; minSdk 28; targetSdk 28; versionCode 1; versionName '0.1.0-source'; ndk { abiFilters 'arm64-v8a' } }
+ buildTypes { debug { debuggable false }; release { minifyEnabled false } }
+ compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+ // Experimental dedicated Android 9 console; source distribution only.
+ lint { disable 'ExpiredTargetSdkVersion' }
+ packaging { jniLibs { useLegacyPackaging false } }
+}
+dependencies { implementation 'androidx.core:core:1.19.1'; implementation 'org.mozilla.geckoview:geckoview-arm64-v8a:159.0.20261102144711' }

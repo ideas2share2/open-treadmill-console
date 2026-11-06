@@ -1,0 +1,1 @@
+package android.app; import android.content.*; public class PendingIntent {public static final int FLAG_UPDATE_CURRENT=1; public static PendingIntent getBroadcast(Context c,int n,Intent i,int flags){return new PendingIntent();} }

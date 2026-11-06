@@ -1,0 +1,4 @@
+ALTER TABLE samples ADD COLUMN grip_hr INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE samples ADD COLUMN bluetooth_hr INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE samples ADD COLUMN hr_source TEXT NOT NULL DEFAULT 'legacy';
+UPDATE samples SET hr_source='none' WHERE hr=0;
