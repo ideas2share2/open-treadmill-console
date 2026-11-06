@@ -25,9 +25,11 @@ Availability depends on software. Some consoles respond immediately; some show a
 
 ### Community reference for a response-code prompt
 
+An [offline calculator and algorithm notes](RESPONSE_CODE.md) are included for the legacy numeric prompt. It has no network or device connection and offers Java-compatible and community-helper modes. Compatibility still depends on the firmware.
+
 The QZ instructions also describe a community route using [getresponsecode.com](https://getresponsecode.com/): enter the current challenge from your own console, then enter the returned response locally on the console. This is a third-party service, not manufacturer support, and compatibility varies. Review its privacy/trust implications first; it should not need an account password, serial number or registration photo. No real challenge or response from a machine is included here.
 
-If the gesture or documented owner-access route is unavailable, stop at that point and ask the manufacturer or a qualified repairer for the correct access route. This repository does not supply a service-code generator, root exploit or OEM firmware image.
+If the gesture or documented owner-access route is unavailable, stop at that point and ask the manufacturer or a qualified repairer for the correct access route. The included utility only calculates the documented legacy numeric response; it does not brute-force a console, provide a root exploit or include an OEM firmware image.
 
 ## 3. Reach Android Settings
 

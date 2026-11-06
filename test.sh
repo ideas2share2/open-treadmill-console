@@ -24,4 +24,5 @@ python3 tests/migration_test.py
 python3 tests/heart_migration_test.py
 python3 tests/calorie_migration_test.py
 python3 tests/power_loss_test.py
+python3 tests/response_code_test.py
 bash tests/engine-host/run.sh "${1:-1}"

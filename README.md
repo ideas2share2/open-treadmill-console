@@ -43,6 +43,7 @@ Read [INSTALLATION.md](docs/INSTALLATION.md) before installing anything. The pub
 ## Documentation
 
 - [Android tablet access, from the beginning](docs/TABLET_ACCESS.md)
+- [Offline legacy response-code calculator and algorithm](docs/RESPONSE_CODE.md)
 - [AI assistant working guide](docs/AI_ASSISTANT_GUIDE.md)
 - [Build and tests](docs/BUILD.md)
 - [Installation and recovery](docs/INSTALLATION.md)

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Offline legacy console response calculator</title>
+<style>
+:root{color-scheme:dark;font:17px/1.55 system-ui,sans-serif;background:#101412;color:#f5f4ee}body{max-width:620px;margin:7vh auto;padding:24px}h1{font-size:1.8rem;line-height:1.2}label{display:block;margin:24px 0 8px}input,select,button{box-sizing:border-box;width:100%;font:inherit;border:1px solid #68736a;border-radius:8px;padding:12px;background:#1b231e;color:inherit}button{background:#c8ff30;color:#172100;font-weight:700;margin-top:24px;cursor:pointer}output{display:block;font-size:2.5rem;font-variant-numeric:tabular-nums;min-height:1.5em;margin:24px 0;color:#c8ff30}small{color:#bec9c0}.error{color:#ffadad}a{color:#c8ff30}
+</style>
+<h1>Legacy console response calculator</h1>
+<p>For the owner-service challenge prompt on compatible older consoles. Keep the belt stopped and the safety key removed.</p>
+<p><small>This file works offline. It makes no network requests, stores nothing and cannot connect to or control a treadmill. Firmware compatibility is not guaranteed.</small></p>
+<form id="calculator" novalidate>
+<label for="challenge">Challenge shown on your console</label>
+<input id="challenge" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="6" placeholder="1–6 digits" aria-describedby="hint">
+<label for="mode">Calculation</label>
+<select id="mode"><option value="java">Java-compatible legacy algorithm</option><option value="helper">Match community JavaScript helper</option></select>
+<small id="hint">The modes agree for most inputs. They differ on rare signed-integer edge cases; see the algorithm notes in the repository. Do not assume either mode works on every firmware.</small>
+<button type="submit">Calculate response</button>
+</form>
+<output id="result" aria-live="polite"></output>
+<p id="status" class="error" role="alert"></p>
+<p><small>Enter the result locally on your own console. This computes the legacy method only; it cannot restore a service menu that the firmware does not expose.</small></p>
+<script>
+'use strict';
+function calculateResponse(value, mode) {
+  if (!/^[0-9]{1,6}$/.test(value)) throw new Error('Enter 1–6 digits from your own console.');
+  if (mode !== 'java' && mode !== 'helper') throw new Error('Choose a listed calculation.');
+  const factor = 0x5deece66dn, mask = (1n << 48n) - 1n, bound = 999999n;
+  let state = (BigInt(value) ^ factor) & mask;
+  for (;;) {
+    state = (state * factor + 11n) & mask;
+    const bits = state >> 17n, result = bits % bound;
+    if (mode === 'helper' || bits - result + bound - 1n < (1n << 31n)) return result.toString();
+  }
+}
+document.getElementById('calculator').addEventListener('submit', event => {
+  event.preventDefault();
+  const output = document.getElementById('result'), status = document.getElementById('status');
+  output.textContent = ''; status.textContent = '';
+  try { output.textContent = calculateResponse(document.getElementById('challenge').value, document.getElementById('mode').value); }
+  catch (error) { status.textContent = error.message; }
+});
+</script>
+</html>

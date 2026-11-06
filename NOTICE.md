@@ -10,3 +10,5 @@ The project is independent of the manufacturers and services named in the docume
 - **Gradle wrapper**, Apache License2.0. Standard wrapper scripts/JAR bootstrap the pinned Gradle distribution. The Apache license is included in `licenses/Apache-2.0.txt`. [Upstream](https://github.com/gradle/gradle).
 
 No OEM APK, firmware, signing key, user account data, workout database or private reverse-engineering dump is included. Public protocol tests contain synthetic boundary replies, not unit captures. Ordinary protocol interoperability is documented; OEM binaries remain excluded.
+
+Legacy response-code utilities independently implement documented Java Random behavior, informed by the public community helper. See docs/RESPONSE_CODE.md for sources and the rare arithmetic difference. Website HTML/analytics and OEM binaries are not included.

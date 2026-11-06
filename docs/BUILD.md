@@ -18,6 +18,8 @@ Exact toolchain and dependency versions are in `toolchain.json`. The Gradle9.8.2
 
 Tests use temporary directories and synthetic fixtures. The script fixes its own test timezone to a synthetic daylight-saving zone; production follows the tablet's local timezone. Tests cover protocol framing, authentication, Start/Pause/Stop ordering, key gates, interrupted reads, expiry/no replay, UI responsiveness, idle/wake guards, records, profiles, calories, chart bounds and SQLite migrations/crash recovery.
 
+The response-code check uses only synthetic inputs and JDK17 as a reference. Optional `node tests/response_code_js_test.mjs` also checks the standalone HTML script.
+
 `./test.sh 3` repeats the fake USB worker scenarios three times. Test stubs are never packaged in the Android apps. Python database tests create temporary synthetic databases only.
 
 ## Android packages

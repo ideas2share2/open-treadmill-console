@@ -2,7 +2,7 @@
 
 - This is experimental powered-equipment software, not a universal firmware/console replacement. Hardware safety circuitry remains essential.
 - The public renamed build is host-built/tested; it has not been physically validated on another treadmill. Android views, service/USB timing and physical behavior require owner checks.
-- Access to Android service/privileged mode depends on OEM firmware. Some versions require manufacturer-assisted unlocking. No universal response code is included.
+- Access to Android service/privileged mode depends on OEM firmware. Some versions require manufacturer-assisted unlocking. An offline calculator covers the documented legacy numeric algorithm only; its two arithmetic modes do not guarantee compatibility with every firmware.
 - Reported/commanded speed is not independent proof of physical motion or stopping. A separate actual-speed field can be unusable.
 - Handle heart-rate acquisition remains unconfirmed. Bluetooth strap compatibility and callback behavior vary. A repeated zero pulse is not proof of sensor failure.
 - Speaker Bluetooth can operate independently from Android. This app does not claim a verified speaker track/status/disconnect API; use the phone's controls.
